@@ -22,5 +22,5 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public void deleteById(int id){taskRepository.deleteById(id);}
+    public Mono<Void> deleteById(int id){ return taskRepository.deleteById(id);}
 }
