@@ -16,7 +16,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Mono<UserTask> getUserById(String id){
+    public Mono<UserTask> getUserById(int id){
         return userRepository.findById(id);
     }
 }

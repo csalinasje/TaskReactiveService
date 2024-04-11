@@ -18,7 +18,9 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Mono<Task> getTaskById(String id){
+    public Mono<Task> getTaskById(int id){
         return taskRepository.findById(id);
     }
+
+    public void deleteById(int id){taskRepository.deleteById(id);}
 }
