@@ -23,7 +23,6 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public boolean deleteById(int id){
-        taskRepository.deleteById(id).doOnSuccess(System.out::println).doOnError(System.out::println).log();
-        return true;}
+    public Mono<Void> deleteById(int id){
+        return taskRepository.deleteById(id);}
 }

@@ -24,14 +24,14 @@ public class TaskController {
 //        return  taskService.saveTask(task);
 //    }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @DeleteMapping("/deletecontroller/{id}")
-    public void deleteById (@PathVariable int id){
-        taskService.deleteById(id);
-    }
-    private Flux<Task> listTask(){
-            return taskService.getAllTask();
-        }
+//    @CrossOrigin(origins = "http://localhost:4200")
+//    @DeleteMapping("/deletecontroller")
+//    public Mono<Void> deleteById (@RequestParam Integer id){
+//        return taskService.deleteById(id);
+//    }
+//    private Flux<Task> listTask(){
+//            return taskService.getAllTask();
+//        }
 
     @GetMapping("/taskFlux")
     public Flux<Task> getFlux(){

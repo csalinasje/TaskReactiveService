@@ -15,6 +15,6 @@ public class TaskRouter {
         return RouterFunctions
                 .route(RequestPredicates.GET("/api/task/tasks"),taskHandler::getAllTasks)
                 .andRoute(RequestPredicates.POST("/api/task/save"),taskHandler::saveTask)
-                .andRoute(RequestPredicates.DELETE("/api/task/delete/{id}"),taskHandler::deleteTask);
+                .andRoute(RequestPredicates.DELETE("/api/task/delete"),taskHandler::deleteTask);
     }
 }
