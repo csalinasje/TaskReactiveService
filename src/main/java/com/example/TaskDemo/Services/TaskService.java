@@ -2,11 +2,12 @@ package com.example.TaskDemo.Services;
 
 import com.example.TaskDemo.Model.Task;
 import com.example.TaskDemo.Repositories.TaskRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
+@Slf4j
 @Service
 public class TaskService {
     @Autowired
@@ -22,5 +23,7 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public void deleteById(int id){taskRepository.deleteById(id);}
+    public boolean deleteById(int id){
+        taskRepository.deleteById(id).doOnSuccess(System.out::println).doOnError(System.out::println).log();
+        return true;}
 }
