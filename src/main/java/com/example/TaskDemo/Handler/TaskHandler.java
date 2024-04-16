@@ -28,9 +28,9 @@ public class TaskHandler {
     }
 
     public Mono<ServerResponse> saveTask(ServerRequest serverRequest) {
-        return serverRequest.bodyToMono(Task.class)
-                .flatMap(task -> taskService.saveTask(task))
-                .flatMap(task -> ServerResponse.created(URI.create("/api/task/save")).build());
+        Mono<Task> taskSave = serverRequest.bodyToMono(Task.class)
+                .flatMap(task -> taskService.saveTask(task)).log();
+        return ServerResponse.created(URI.create("/api/task/save")).body(taskSave,Task.class);
     }
 
     public Mono<ServerResponse> deleteTask(ServerRequest serverRequest) {
