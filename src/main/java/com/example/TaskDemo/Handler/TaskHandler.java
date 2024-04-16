@@ -34,7 +34,9 @@ public class TaskHandler {
     }
 
     public Mono<ServerResponse> deleteTask(ServerRequest serverRequest) {
-        return taskService.deleteById(Integer.parseInt(serverRequest.queryParam("id").get()))
-                .then(ServerResponse.noContent().build());
+        int id = Integer.parseInt(serverRequest.queryParam("id").get());
+        return taskService.deleteById(id)
+                .then(ServerResponse.ok()
+                .bodyValue(id));
     }
 }
