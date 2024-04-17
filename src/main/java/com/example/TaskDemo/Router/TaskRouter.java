@@ -1,6 +1,7 @@
 package com.example.TaskDemo.Router;
 
 import com.example.TaskDemo.Handler.TaskHandler;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RequestPredicates;
@@ -10,6 +11,10 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
 public class TaskRouter {
+    @Bean
+    public WebProperties.Resources resources (){
+        return new WebProperties.Resources();
+    }
     @Bean
     public RouterFunction<ServerResponse> functionalTaskRoutes(TaskHandler taskHandler){
         return RouterFunctions
