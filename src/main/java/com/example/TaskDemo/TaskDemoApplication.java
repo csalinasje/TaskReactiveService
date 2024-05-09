@@ -1,15 +1,29 @@
 package com.example.TaskDemo;
 
+import com.example.TaskDemo.JWT.JwtTokenAuthenticationFilter;
+import com.example.TaskDemo.JWT.JwtTokenProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
+import org.springframework.security.authorization.AuthorizationDecision;
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.security.web.server.authorization.AuthorizationContext;
+import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
 
 @SpringBootApplication
+@ConfigurationPropertiesScan
 public class TaskDemoApplication {
 
 	public static void main(String[] args) {
@@ -30,6 +44,7 @@ public class TaskDemoApplication {
 		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfig);
 		return new CorsFilter(urlBasedCorsConfigurationSource);
 	}
+
 }
 
 
