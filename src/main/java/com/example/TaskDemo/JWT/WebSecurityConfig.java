@@ -48,6 +48,8 @@ public class WebSecurityConfig {
 //                )
 //                .csrf(ServerHttpSecurity.CsrfSpec::disable)
 //                .httpBasic(withDefaults())
+//                .authenticationManager(authenticationManger)
+//                .securityContextRepository(securityContextRepository)
 //                .formLogin(withDefaults());
 //        return         httpSecurity
 //                .build();
